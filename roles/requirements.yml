@@ -1,0 +1,4 @@
+- src: https://github.com/constructorfleet/ansible-user.git
+  name: user
+  version: master
+

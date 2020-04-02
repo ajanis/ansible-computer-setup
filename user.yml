@@ -2,6 +2,9 @@
 - name: Set up user-specific packages/configs etc
   hosts: all
   become: False
+  vars_files:
+    - vault.yml
+
   tasks:
     - import_role:
         name: user

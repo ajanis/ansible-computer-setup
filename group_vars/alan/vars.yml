@@ -47,7 +47,7 @@ homebrew_cask_user_packages:
   - java
   - fluid
   - viscosity
-  - divvy
+  - moom
   - iterm2
   - font-hack-nerd-font-mono
   - font-hack-nerd-font
@@ -66,9 +66,9 @@ python3_pkgs:
   - redis
   - ansible-tower-cli
 
-ssh_private_key: "{{ vault_ssh_private_key }}"
+ssh_private_key: "{{ vault_alan_ssh_private_key }}"
 
-ssh_public_key: "{{ vault_ssh_public_key }}"
+ssh_public_key: "{{ vault_alan_ssh_public_key }}"
 
 git_config: |
   [user]

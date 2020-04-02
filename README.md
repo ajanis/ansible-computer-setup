@@ -2,16 +2,18 @@
 Configure OSX Workstation
 ## Setup
   - Check out project to local directory
-```bash
+```shell
 git clone https://github.com/ajanis/ansible-computer-setup.git
 ```
   - Install user role via galaxy
-```bash
+```shell
 cd ansible-computer-setup
 ansible-galaxy role install -r roles/requirements.yml
 ```
   - Create inventory groups and hosts entries for your workstation in 'hosts' file
 ```yaml
+# hosts
+
 all:
   children:
     alan:
@@ -37,7 +39,8 @@ all:
 ```
   - Create necessary group_vars files for extended vars
 ```yaml
----
+# group_vars/alan/vars.yml
+
 local_username: ajanis
 local_user_shell: /bin/zsh
 
@@ -193,8 +196,17 @@ p10krc: |
 
 ```
   - Add sensitive data to 'vault.yml' file
+```yaml
+# vault.yml
+
+vault_ssh_private_key: |
+  ...
+  ...
+vault_ssh_public_key: >
+  ...
+```
 ## Run Playbook
   - Run 'user.yml' playbook against new host
-```bash
+```shell
 ansible-playbook -l <newhost> --ask-vault-pass --ask-pass --ask-become-pass user.yml
 ```

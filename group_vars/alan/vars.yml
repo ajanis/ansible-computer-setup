@@ -1052,8 +1052,17 @@ zshrc: |
   git --work-tree=${WORKTREE} --git-dir=${GITDIR} $@
   }
 
+  function sync-local-roles () {
+    if [[ -z $1 ]]; then
+      read -s "Name of role to synchronize: ansible-"
+    fi
+    rsync -avp --exclude "meta/" ~/.ansible/roles/${1}/ ~/Documents/ansible-roles/ansible-${1}/
+  }
+
+
   # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
   [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
 
 p10krc: |
   {% raw %}

@@ -906,34 +906,7 @@ zshrc: |
       echo "launchctl stop gui/501/${job}"
       sudo launchctl stop gui/501/${job}
     done
-    #sudo launchctl stop gui/501/com.
-    #sudo launchctl unload /Library/LaunchAgents/com.${i}*
     echo ""
-  #  case $i in
-  #    cisco)
-  #      echo "Unloading AnyConnect Services"
-  #      sudo launchctl unload /Library/LaunchDaemons/com.cisco*
-  #      sudo launchctl unload /Library/LaunchAgents/com.cisco.anyconnect.aciseposture.plist
-  #      echo ""
-  #      ;;
-  #    jamf)
-  #      echo "Unloading JAMF Services"
-  #      sudo launchctl unload /Library/LaunchDaemons/com.jamf*
-  #      sudo launchctl unload /Library/LaunchAgents/com.jamf*
-  #      echo ""
-  #      ;;
-  #    tanium)
-  #      echo "Unloading Tanium Services"
-  #      sudo launchctl unload /Library/LaunchDaemons/com.tanium*
-  #      echo ""
-  #      ;;
-  #    airwatch)
-  #      echo "Unloading Airwatch Services"
-  #      sudo launchctl unload /Library/LaunchDaemons/com.cisco*
-  #      sudo launchctl unload /Library/LaunchAgents/com.cisco.anyconnect.aciseposture.plist
-  #      echo ""
-  #      ;;
-  #  esac
     while [[ `pgrep -ilf $i` ]]; do
       sudo pkill -9 -ilf $i
     done
@@ -955,25 +928,6 @@ zshrc: |
       echo "launchctl start gui/501/${job}"
       sudo launchctl start gui/501/${job}
     done
-  #  case $i in
-  #    cisco)
-  #      echo "Loading AnyConnect Services"
-  #      sudo launchctl load /Library/LaunchDaemons/com.cisco*
-  #      sudo launchctl load /Library/LaunchAgents/com.cisco.anyconnect.aciseposture.plist
-  #      ;;
-  #    jamf)
-  #      echo "Loading JAMF Services"
-  #      sudo launchctl load /Library/LaunchDaemons/com.jamf*
-  #      sudo launchctl load /Library/LaunchAgents/com.jamf*
-  #      ;;
-  #    tanium)
-  #      echo "Loading Tanium Services"
-  #      sudo launchctl load /Library/LaunchDaemons/com.tanium*
-  #      ;;
-  #  esac
-    #echo ""
-    #pgrep -ilf $i
-    #echo ""
   done
   }
 
@@ -1028,11 +982,7 @@ zshrc: |
   elif [[ "$1" == "disconnect" ]]
       then
       sudo /opt/cisco/anyconnect/bin/vpn -s disconnect
-      #if [[ `pgrep -lf "Cisco AnyConnect Secure Mobility Client.app"` ]]
-      #then
-      #  pkill -lf "Cisco AnyConnect Secure Mobility Client.app"
         unload-wwt-security
-      #fi
       return
   else
      echo "what's your game?"
@@ -1062,6 +1012,7 @@ zshrc: |
 
   # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
   [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
 
 
 p10krc: |

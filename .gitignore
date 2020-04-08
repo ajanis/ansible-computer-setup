@@ -16,3 +16,4 @@ foreman.ini
 dump.rdb
 **/*-test.yml
 fact_cache
+**/.DS_Store

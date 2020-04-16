@@ -24,6 +24,7 @@ homebrew_user_packages:
   - minicom
   - coreutils
   - spice-gtk
+  - mas
 
 homebrew_cask_user_packages:
   - dropbox
@@ -59,6 +60,20 @@ homebrew_cask_user_packages:
   - font-anonymouspro-nerd-font-mono
   - font-anonymouspro-nerd-font
   - font-anonymous-pro
+
+mac_app_store_packages:
+  - name: "Good Notes 5"
+    id: 1444383602
+  - name: "Amphetamine"
+    id: 937984704
+  - name: "Kiwi for Gmail"
+    id: 986304488
+  - name: "Paprika Recipe Manager 3"
+    id: 1303222628
+  - name: "Microsoft To Do"
+    id: 1274495053
+  - name: "Microsoft Remote Desktop"
+    id: 1295203466
 
 python3_pkgs:
   - ansible

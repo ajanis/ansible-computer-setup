@@ -1009,6 +1009,12 @@ zshrc: |
     rsync -avp --exclude "meta/" ~/.ansible/roles/${1}/ ~/Documents/ansible-roles/ansible-${1}/
   }
 
+  function encrypt() {
+    VARNAME=$1
+    read -s "ENCRYPTSTRING?Value to encrypt for $VARNAME : "
+    echo
+    echo -n $ENCRYPTSTRING | ansible-vault encrypt_string --stdin-name $1 | tee >(pbcopy)
+  }
 
   # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
   [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh

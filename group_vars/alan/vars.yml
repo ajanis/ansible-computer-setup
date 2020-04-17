@@ -14,6 +14,10 @@ homebrew_user_packages:
   - tmux
   - screen
   - python
+  - pyenv
+  - pyenv-virtualenv
+  - pyenv-pip-migrate
+  - pyenv-ccache
   - git
   - nmap
   - lftp

@@ -85,8 +85,8 @@ mas_upgrade_all_apps: true
 mas_signin_dialog: false
 
 mas_packages:
-  - name: "Good Notes 5"
-    id: 1444383602
+#  - name: "Good Notes 5"
+#    id: 1444383602
   - name: "Amphetamine"
     id: 937984704
   - name: "Kiwi for Gmail"

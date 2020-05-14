@@ -54,16 +54,6 @@ homebrew_cask_user_packages:
   - viscosity
   - moom
   - iterm2
-  - font-hack-nerd-font-mono
-  - font-hack-nerd-font
-  - font-sourcecodepro-nerd-font-mono
-  - font-sourcecodepro-nerd-font
-  - font-source-code-pro
-  - font-meslo-nerd-font-mono
-  - font-meslo-nerd-font
-  - font-anonymouspro-nerd-font-mono
-  - font-anonymouspro-nerd-font
-  - font-anonymous-pro
 
 mas_email: !vault |
           $ANSIBLE_VAULT;1.1;AES256

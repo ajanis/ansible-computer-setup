@@ -33,7 +33,6 @@ homebrew_user_packages:
 homebrew_cask_user_packages:
   - dropbox
   - onedrive
-  - tftpserver
   - istat-menus
   - gimp
   - 1password

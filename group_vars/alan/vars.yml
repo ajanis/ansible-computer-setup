@@ -1069,10 +1069,16 @@ zshrc: |
 
   function encrypt() {
     VARNAME=$1
+    if [[ -f $2 ]]; then
+        echo Encrypting contents of file: ${2:a}
+        ENCRYPTSTRING=$(<$2:a)
+        else
     read -s "ENCRYPTSTRING?Value to encrypt for $VARNAME : "
+    fi
     echo
     echo -n $ENCRYPTSTRING | ansible-vault encrypt_string --stdin-name $1 | tee >(pbcopy)
   }
+
 
   # Set up pyenv
   export PYENV_ROOT="$HOME/.pyenv"

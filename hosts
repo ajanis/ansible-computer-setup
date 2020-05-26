@@ -18,9 +18,9 @@ all:
               6264383735373364380a306237333065363164343932636461643130313861383230396431336639
               3737
       hosts:
-        rattrap:
-          ansible_ssh_host: 10.0.10.113
-          ansible_connection: local
+        grimlock:
+          ansible_ssh_host: 10.0.12.138
+          ansible_user: ajanis
         galvatron:
           ansible_ssh_host: 10.0.12.44
           ansible_connection: local

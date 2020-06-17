@@ -838,7 +838,7 @@ zshrc: |
   alias zshconfig="subl ~/.zshrc"
   alias ohmyzsh="subl ~/.oh-my-zsh"
   alias dhcptcpdump="tcpdump -vvv -s 0 '((port 67 or port 68) and (udp[8:1] = 0x1))'"
-
+  alias flush-dns-cache="sudo killall -HUP mDNSResponder;sudo killall mDNSResponderHelper;sudo dscacheutil -flushcache"
 
   # Home Assistant
   alias restartha='sudo systemctl restart home-assistant@homeassistant.service'

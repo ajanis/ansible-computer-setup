@@ -30,7 +30,7 @@ homebrew_user_packages:
   - java
 
 homebrew_cask_user_packages:
-  - android-studio
+  - intellij-idea
   - pycharm
   - goland
   - webstorm
@@ -38,13 +38,11 @@ homebrew_cask_user_packages:
   - steam
   - viscosity
   - virtualbox
-  - java
   - gimp
   - slack
   - arduino
   - spotify
   - xquartz
-  - divvy
   - istat-menus
   - iterm2
   - firefox

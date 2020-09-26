@@ -2,7 +2,6 @@ roles/*
 .vault*
 hosts*
 collections/*
-env_*.sh
 **/*.bak
 **/*.swp
 **/*.pyc
@@ -17,3 +16,4 @@ dump.rdb
 **/*-test.yml
 fact_cache
 **/.DS_Store
+.idea/*

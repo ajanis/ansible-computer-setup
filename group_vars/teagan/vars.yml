@@ -27,9 +27,9 @@ homebrew_user_packages:
   - coreutils
   - spice-gtk
   - wget
+  - java
 
 homebrew_cask_user_packages:
-  - java
   - android-studio
   - pycharm
   - goland
@@ -48,16 +48,6 @@ homebrew_cask_user_packages:
   - istat-menus
   - iterm2
   - firefox
-  - font-hack-nerd-font-mono
-  - font-hack-nerd-font
-  - font-sourcecodepro-nerd-font-mono
-  - font-sourcecodepro-nerd-font
-  - font-source-code-pro
-  - font-meslo-nerd-font-mono
-  - font-meslo-nerd-font
-  - font-anonymouspro-nerd-font-mono
-  - font-anonymouspro-nerd-font
-  - font-anonymous-pro
 
 ssh_private_key: "{{ vault_ssh_private_key }}"
 
@@ -293,17 +283,7 @@ zshrc: |
   # load a random theme each time oh-my-zsh is loaded, in which case,
   # to know which specific one was loaded, run: echo $RANDOM_THEME
   # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-  #ZSH_THEME="mrtazz"
-  #ZSH_THEME="risto"
-  #ZSH_THEME="pygmalion"
-  #ZSH_THEME="kphoen"
-  #ZSH_THEME="jreese"
-  #ZSH_THEME="dpoggi"
-  #ZSH_THEME="daveverwer"
-  #ZSH_THEME="alanpeabody"
-  #ZSH_THEME="blinks"
-  ZSH_THEME="powerlevel10k/powerlevel10k"
-  #ZSH_THEME="devicenull/devicenull"
+  ZSH_THEME="agnostor"
   
   # Set list of themes to pick from when loading at random
   # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -337,16 +317,16 @@ zshrc: |
   # DISABLE_AUTO_TITLE="true"
   
   # Uncomment the following line to enable command auto-correction.
-  #ENABLE_CORRECTION="true"
+  ENABLE_CORRECTION="true"
   
   # Uncomment the following line to display red dots whilst waiting for completion.
-  #COMPLETION_WAITING_DOTS="true"
+  COMPLETION_WAITING_DOTS="true"
   
   # Uncomment the following line if you want to disable marking untracked files
   # under VCS as dirty. This makes repository status check for large repositories
   # much, much faster.
   # DISABLE_UNTRACKED_FILES_DIRTY="true"
-  ZSH_DISABLE_COMPFIX="true"
+  # ZSH_DISABLE_COMPFIX="true"
   
   # Uncomment the following line if you want to change the command execution time
   # stamp shown in the history command output.
@@ -354,7 +334,7 @@ zshrc: |
   # "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
   # or set a custom format using the strftime function format specifications,
   # see 'man strftime' for details.
-  HIST_STAMPS="mm.dd.yyyy"
+  HIST_STAMPS="yyyy.mm.dd"
   
   # Would you like to use another custom folder than $ZSH/custom?
   # ZSH_CUSTOM=/path/to/new-custom-folder

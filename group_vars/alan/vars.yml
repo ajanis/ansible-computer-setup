@@ -31,19 +31,6 @@ homebrew_user_packages:
   - mas
 
 homebrew_cask_user_packages:
-  - font-meslo-for-powerline
-  - font-meslolg-nerd-font
-  - font-hack-nerd-font
-  - font-saucecodepro-nerd-font
-  - font-anonymice-powerline
-  - font-menlo-for-powerline
-  - font-meslo-for-powerline
-  - font-source-code-pro-for-powerline
-  - font-monofur-for-powerline
-  - font-powerline-symbols
-  - font-source-code-pro
-  - font-anonymice-nerd-font
-  - font-anonymous-pro
   - dropbox
   - onedrive
   - istat-menus

@@ -60,8 +60,6 @@ homebrew_cask_user_packages:
   - spotify
   - sublime-text
   - xquartz
-  - virtualbox
-  - java
   - fluid
   - viscosity
   - moom

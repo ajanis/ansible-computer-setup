@@ -465,8 +465,21 @@ ssh_config: |
   TCPKeepAlive yes
   LogLevel QUIET
   XAuthLocation /usr/X11/bin/xauth
+  #Ceph Storage
+  Host ceph01.hoem.prettybaked.com
+  Hostname 192.168.1.127
+  User root
+  Host ceph02.hoem.prettybaked.com
+  Hostname 192.168.1.128
+  User root
+  Host ceph32.hoem.prettybaked.com
+  Hostname 192.168.1.129
+  User root
+  Host ceph04.hoem.prettybaked.com
+  Hostname 192.168.1.130
+  User root
 
-  #Home
+    #Home
   Host *.home.prettybaked.com
   User ajanis
 
@@ -515,14 +528,28 @@ ssh_config: |
   Hostname 10.0.11.184
   User pi
 
+  Host vsgforemanproxy
+  Hostname 172.31.102.6
+  User janisa
+  LocalForward 443 10.10.10.201:443
+  RemoteCommand bash -c 'echo "Listening on port 443"; read -r -d '' _'
+  RequestTTY no
+
+  Host vsgforemansmartproxy
+  Hostname 172.31.102.6
+  User janisa
+  LocalForward 8443 10.10.10.201:8443
+  RemoteCommand bash -c 'echo "Listening on port 443"; read -r -d '' _'
+  RequestTTY no
+
   #ATC UFISpace Switch
   Host atcuficon
   Hostname con16-33.wwtatc.local
-  User janisa
 
   #DL360G9-11 ATC Deploy Host (DHCP/TFTP/PXE/HTTP)
   Host atcdeploy
   Hostname 10.253.63.4
+  User janisa
   User root
 
   # SIAD ITC Avocent Console
@@ -834,13 +861,13 @@ zshrc: |
   alias updateha='sourceha; pip3 install --upgrade homeassistant'
 
   # All-Purpose Aliases
-
+  alias cephstatus='ssh ceph01 "$(typeset -f cephdf); cephdf"'
   alias sroot='sudo zsh -l'
   alias less=view
   alias more=view
 
   # pip installations
-  alias ansible-pip="/usr/local/opt/ansible/libexec/bin/pip"
+  alias ansible-pip="/usr/local/opt/python@3.8/bin/pip3.8"
   alias brew-pip="/usr/local/opt/python/bin/pip"
   alias system-pip="/usr/local/bin/pip"
   # Print <Last Regex Match> to end of file.

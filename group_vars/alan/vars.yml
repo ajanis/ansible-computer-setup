@@ -465,21 +465,22 @@ ssh_config: |
   TCPKeepAlive yes
   LogLevel QUIET
   XAuthLocation /usr/X11/bin/xauth
+
   #Ceph Storage
-  Host ceph01.hoem.prettybaked.com
-  Hostname 192.168.1.127
+  Host ceph01.home.prettybaked.com
+  Hostname 10.0.20.127
   User root
-  Host ceph02.hoem.prettybaked.com
-  Hostname 192.168.1.128
+  Host ceph02.home.prettybaked.com
+  Hostname 10.0.20.128
   User root
-  Host ceph32.hoem.prettybaked.com
-  Hostname 192.168.1.129
+  Host ceph03.home.prettybaked.com
+  Hostname 10.0.20.129
   User root
-  Host ceph04.hoem.prettybaked.com
-  Hostname 192.168.1.130
+  Host ceph04.home.prettybaked.com
+  Hostname 10.0.20.130
   User root
 
-    #Home
+  #Home
   Host *.home.prettybaked.com
   User ajanis
 
@@ -488,34 +489,9 @@ ssh_config: |
   Hostname 172.31.102.6
   User janisa
 
-  #Ubiquiti EdgeSwitch 48 Lite
-  Host es48
-  Hostname 192.168.0.5
-  User ajanis
-
-  #Ubiquiti EdgeSwitch 16
-  Host es16
-  Hostname 192.168.0.6
-  User ajanis
-
-  #Ubiquiti EdgeSwitch 8
-  Host es8
-  Hostname 192.168.0.7
-  User ajanis
-
-  #Basement UAP-AC-PRO
-  Host basement-ap
-  Hostname 192.168.0.101
-  User root
-
-  #Livingroom UAP-AC-MESH
-  Host frontyard-ap
-  Hostname 192.168.0.102
-  User root
-
-  #Garage UAP-AC-LR
-  Host livingroom-ap
-  Hostname 192.168.0.104
+  #UDMPro
+  Host udmpro
+  Hostname 192.168.1.2
   User root
 
   #RetroPie Game Emulator
@@ -524,8 +500,8 @@ ssh_config: |
   User pi
 
   #Bathroom Magic Mirror
-  Host magicmirror1
-  Hostname 10.0.11.184
+  Host magicmirror
+  Hostname 10.0.11.109
   User pi
 
   Host vsgforemanproxy

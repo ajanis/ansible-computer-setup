@@ -521,11 +521,11 @@ ssh_config: |
   #ATC UFISpace Switch
   Host atcuficon
   Hostname con16-33.wwtatc.local
+  User janisa
 
   #DL360G9-11 ATC Deploy Host (DHCP/TFTP/PXE/HTTP)
   Host atcdeploy
   Hostname 10.253.63.4
-  User janisa
   User root
 
   # SIAD ITC Avocent Console

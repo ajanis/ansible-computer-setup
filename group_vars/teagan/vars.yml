@@ -28,6 +28,8 @@ homebrew_user_packages:
   - spice-gtk
   - wget
   - java
+
+homebrew_cask_user_packages:
   - intellij-idea
   - pycharm
   - goland
@@ -44,8 +46,6 @@ homebrew_user_packages:
   - istat-menus
   - iterm2
   - firefox
-
-homebrew_cask_user_packages: []
 
 ssh_private_key: "{{ vault_ssh_private_key }}"
 

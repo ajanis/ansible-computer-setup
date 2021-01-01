@@ -55,6 +55,10 @@ all:
           ansible_ssh_host: 10.0.13.139
           ansible_user: tglenn
           ansible_connection: local
+        mbp15:
+          ansible_ssh_host: 10.0.14.175
+          ansible_user: tglenn
+          ansible_connection: local
     aly:
       hosts:
         alys-imac:

@@ -281,7 +281,7 @@ zshrc: |
   # load a random theme each time oh-my-zsh is loaded, in which case,
   # to know which specific one was loaded, run: echo $RANDOM_THEME
   # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-  ZSH_THEME="agnostor"
+  ZSH_THEME="agnoster"
   
   # Set list of themes to pick from when loading at random
   # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -378,11 +378,7 @@ zshrc: |
   # export LANG=en_US.UTF-8
   
   # Preferred editor for local and remote sessions
-  if [[ -n $SSH_CONNECTION ]]; then
-    export EDITOR='vim'
-  else
-    export EDITOR='/usr/local/bin/subl'
-  fi
+  export EDITOR='vim'
   
   # Compilation flags
   export ARCHFLAGS="-arch x86_64"
@@ -393,8 +389,8 @@ zshrc: |
   # For a full list of active aliases, run `alias`.
   #
   # Example aliases
-  alias zshconfig="subl ~/.zshrc"
-  alias ohmyzsh="subl ~/.oh-my-zsh"
+  alias zshconfig="vim ~/.zshrc"
+  alias ohmyzsh="vim ~/.oh-my-zsh"
   alias dhcptcpdump="tcpdump -vvv -s 0 '((port 67 or port 68) and (udp[8:1] = 0x1))'"
   
   # Home Assistant

@@ -16,12 +16,10 @@ homebrew_user_packages:
   - python
   - git
   - nmap
-  - nvm
   - pyenv-virtualenv
   - lftp
   - ipmitool
   - ansible
-  - unrar
   - p7zip
   - minicom
   - coreutils
@@ -357,7 +355,6 @@ zshrc: |
     github
     gitignore
     git-prompt
-    git-remote-branch
     pip
     python
     pyenv

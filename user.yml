@@ -8,3 +8,32 @@
   tasks:
     - import_role:
         name: user
+
+    - block:
+        - name: Add ip to super user alias
+          uri:
+            url: '{{ opnsense_url }}/api/firewall/alias_util/add/{{ opnsense_alias }}'
+            force_basic_auth: yes
+            method: POST
+            body:
+              address: '{{ ansible_default_ipv4.address }}'
+            body_format: json
+            user: '{{ opnsense_user }}'
+            password: '{{ opnsense_password }}'
+          register: api_response
+
+        - name: Apply changes to firewall
+          uri:
+            url: '{{ opnsense_url }}/api/firewall/alias/reconfigure'
+            force_basic_auth: yes
+            method: POST
+            user: '{{ opnsense_user }}'
+            password: '{{ opnsense_password }}'
+          when:
+            - api_response.status == 200
+      when:
+        - firewall_exception | default(False)
+        - opnsense_url | default(False)
+        - opnsense_user | default(False)
+        - opnsense_password | default(False)
+        - opnsense_alias | default(False)

@@ -57,18 +57,20 @@ homebrew_user_packages:
   - mas
 
 homebrew_cask_user_packages:
+  - font-anonymice-nerd-font
+  - font-hack-nerd-font
+  - font-meslo-lg-nerd-font
+  - font-profont-nerd-font
+  - font-proggy-clean-tt-nerd-font
+  - font-ubuntu-nerd-font
+  - font-jetbrains-mono-nerd-font
   - dropbox
-  - onedrive
   - istat-menus
   - gimp
-  - 1password
   - bartender
   - synergy
   - osxfuse
-  - google-chrome
   - slack
-  - microsoft-teams
-  - firefox
   - signal
   - spotify
   - sublime-text

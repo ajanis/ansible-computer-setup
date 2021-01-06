@@ -30,9 +30,10 @@ all:
           ansible_connection: local
           ansible_user: ajanis
         blitzwing:
-          ansible_ssh_host: 10.0.12.100
+          ansible_ssh_host: 10.0.12.14
           ansible_connection: local
-          ansible_user: alan
+          ansible_user: janisa
+          local_username: janisa
     teagan:
       vars:
         ansible_user: tglenn

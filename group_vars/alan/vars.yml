@@ -813,7 +813,6 @@ zshrc: |
     github
     gitignore
     git-prompt
-    git-remote-branch
     pip
     python
     pyenv

@@ -835,12 +835,7 @@ zshrc: |
   # You may need to manually set your language environment
   # export LANG=en_US.UTF-8
 
-  # Preferred editor for local and remote sessions
-  if [[ -n $SSH_CONNECTION ]]; then
-    export EDITOR='vim'
-  else
-    export EDITOR='/usr/local/bin/subl'
-  fi
+
 
   # Compilation flags
   export ARCHFLAGS="-arch x86_64"
@@ -849,13 +844,18 @@ zshrc: |
   # plugins, and themes. Aliases can be placed here, though oh-my-zsh
   # users are encouraged to define aliases within the ZSH_CUSTOM folder.
   # For a full list of active aliases, run `alias`.
-  #
-  # Example aliases
-  alias zshconfig="subl ~/.zshrc"
-  alias ohmyzsh="subl ~/.oh-my-zsh"
-  alias dhcptcpdump="tcpdump -vvv -s 0 '((port 67 or port 68) and (udp[8:1] = 0x1))'"
-  alias flush-dns-cache="sudo killall -HUP mDNSResponder;sudo killall mDNSResponderHelper;sudo dscacheutil -flushcache"
 
+  # Editors
+  function pycharm() {
+  open -na "PyCharm.app" --args "$@"
+  }
+
+  # Preferred editor for local and remote sessions
+  if [[ -n $SSH_CONNECTION ]]; then
+    export EDITOR='vim'
+  else
+    export EDITOR='pycharm'
+  fi
   # Home Assistant
   alias restartha='sudo systemctl restart home-assistant@homeassistant.service'
   alias stopha='sudo systemctl stop home-assistant@homeassistant.service'
@@ -865,10 +865,14 @@ zshrc: |
   alias updateha='sourceha; pip3 install --upgrade homeassistant'
 
   # All-Purpose Aliases
-  alias cephstatus='ssh ceph01 "$(typeset -f cephdf); cephdf"'
+  alias cephstatus='ssh ajanis@ceph01 "$(typeset -f cephdf); cephdf"'
   alias sroot='sudo zsh -l'
   alias less=view
   alias more=view
+  alias zshconfig="pycharm ~/.zshrc"
+  alias ohmyzsh="pycharm ~/.oh-my-zsh"
+  alias dhcptcpdump="tcpdump -vvv -s 0 '((port 67 or port 68) and (udp[8:1] = 0x1))'"
+  alias flush-dns-cache="sudo killall -HUP mDNSResponder;sudo killall mDNSResponderHelper;sudo dscacheutil -flushcache"
 
   # pip installations
   alias ansible-pip="/usr/local/opt/python@3.8/bin/pip3.8"
@@ -946,15 +950,23 @@ zshrc: |
 
   # KVM Guest Info
   kvm-info () {
-  printf "%-15s %-7s %-19s %-45s %-6s %-0s\n" "hostname" "vnic" "mac addr" "disk img" "vnc" "ip addr"
-  for i in `sudo virsh list --all | tail -n +3 | awk '{print $2}'`; do
-    echo $(sudo virsh dumpxml $i |
-    egrep "(vnet|mac address|source file)" | cut -d "'" -f2) | while read img mac vnet; do
-      vncport=$(virsh dumpxml $i| egrep "vnc" | cut -d "'" -f4)
-      vncport=${vncport:="NA"}
-      hostip=$(host $i | head -n1 | awk '{print $NF}')
-      hostip=${hostip:="NA"}
-      printf "%-15s %-7s %-19s %-45s %-6s %-15s\n" $i $vnet $mac $img $vncport $hostip
+  if [[ -z $1 ]]; then
+    HYPERVISORS="trillian zaphod arthur ford devastator"
+  else
+    HYPERVISORS="$@"
+  fi
+  for h in $HYPERVISORS; do
+    ssh ajanis@${h}
+    printf "%-15s %-7s %-19s %-45s %-6s %-0s\n" "hostname" "vnic" "mac addr" "disk img" "vnc" "ip addr"
+    for i in `sudo virsh list --all | tail -n +3 | awk '{print $2}'`; do
+      echo $(sudo virsh dumpxml $i |
+      egrep "(vnet|mac address|source file)" | cut -d "'" -f2) | while read img mac vnet; do
+        vncport=$(virsh dumpxml $i| egrep "vnc" | cut -d "'" -f4)
+        vncport=${vncport:="NA"}
+        hostip=$(host $i | head -n1 | awk '{print $NF}')
+        hostip=${hostip:="NA"}
+        printf "%-15s %-7s %-19s %-45s %-6s %-15s\n" $i $vnet $mac $img $vncport $hostip
+      done
     done
   done
   }
@@ -1107,7 +1119,6 @@ zshrc: |
     echo
     echo -n $ENCRYPTSTRING | ansible-vault encrypt_string --stdin-name $1 | tee >(pbcopy)
   }
-
 
   # Set up pyenv
   export PYENV_ROOT="$HOME/.pyenv"

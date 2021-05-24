@@ -26,7 +26,7 @@ opnsense_password: !vault |
           6363
 opnsense_alias: super_user_devices
 
-local_username: ajanis
+#local_username: ajanis
 local_user_shell: /bin/zsh
 
 homebrew_user_packages:
@@ -48,8 +48,6 @@ homebrew_user_packages:
   - nmap
   - lftp
   - ipmitool
-  - ansible
-  - unrar
   - p7zip
   - minicom
   - coreutils

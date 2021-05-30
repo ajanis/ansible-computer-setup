@@ -815,7 +815,6 @@ zshrc: |
     git-prompt
     pip
     python
-    pyenv
     pylint
     screen
     sublime

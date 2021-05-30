@@ -842,6 +842,7 @@ zshrc: |
   # users are encouraged to define aliases within the ZSH_CUSTOM folder.
   # For a full list of active aliases, run `alias`.
 
+
   # Editors
   function pycharm() {
   open -na "PyCharm.app" --args "$@"
@@ -870,6 +871,7 @@ zshrc: |
   alias ohmyzsh="pycharm ~/.oh-my-zsh"
   alias dhcptcpdump="tcpdump -vvv -s 0 '((port 67 or port 68) and (udp[8:1] = 0x1))'"
   alias flush-dns-cache="sudo killall -HUP mDNSResponder;sudo killall mDNSResponderHelper;sudo dscacheutil -flushcache"
+  alias ssh-add-all='find ~/.ssh -name "id_*" ! -name "*.pub" -maxdepth 1 -exec ssh-add -K {} \;'
 
   # pip installations
   alias ansible-pip="/usr/local/opt/python@3.8/bin/pip3.8"
@@ -1103,10 +1105,32 @@ zshrc: |
     rsync -avp --exclude "meta/" ~/.ansible/roles/${1}/ ~/Documents/ansible-roles/ansible-${1}/
   }
 
-  alias ssh-add-all='find ~/.ssh -name "id_*" ! -name "*.pub" -maxdepth 1 -exec ssh-add -K {} \;'
+  function pull-role () {
+    if [[ ! -z $1 ]]; then
+      ROLENAME=$1
+    elif [[ -z $1 ]]; then
+      read -s "ROLENAME?Name of role to pull ( Ex: [rolename] or [all] ) ansible- : "
+      export ANSIBLEROLE=ansible-${ROLENAME}
+      export ROLEPATH=$HOME/Documents/ansible-roles/${ANSIBLEROLE}
+      cd ${ROLEPATH}
+      git pull
+      cd $HOME
+    elif [[ "$1" == "all" ]]; then
+      for ROLEPATH in $(find Documents/ansible-roles -type d -maxdepth 1 -name "ansible-*"); do
+        cd ${ROLEPATH}
+        git pull
+        cd $HOME
+      done
+    fi
+  }
+
 
   function encrypt() {
+    if [[ ! -z $1 ]]; then
     VARNAME=$1
+    elif [[ -z $1 ]]; then
+    read -s "VARNAME?Name of variable : "
+    fi
     if [[ -f $2 ]]; then
         echo Encrypting contents of file: ${2:a}
         ENCRYPTSTRING=$(<$2:a)
@@ -1114,7 +1138,7 @@ zshrc: |
     read -s "ENCRYPTSTRING?Value to encrypt for $VARNAME : "
     fi
     echo
-    echo -n $ENCRYPTSTRING | ansible-vault encrypt_string --stdin-name $1 | tee >(pbcopy)
+    echo -n $ENCRYPTSTRING | ansible-vault encrypt_string --stdin-name $VARNAME | tee >(pbcopy)
   }
 
   # Set up pyenv

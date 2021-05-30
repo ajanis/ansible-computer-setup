@@ -1106,13 +1106,22 @@ zshrc: |
 
   function pull-role () {
     if [[ -n $1 ]]; then
-      export ROLENAME=$1
-      export ANSIBLEROLE=ansible-${ROLENAME}
-      export ROLEPATH=$HOME/Documents/ansible-roles/${ANSIBLEROLE}
-      cd ${ROLEPATH}
-      echo ${ROLENAME}
-      git pull
-      cd $HOME
+      if [[ $1 == 'all' ]]; then
+        for ROLEPATH in $(find $HOME/Documents/ansible-roles -type d -maxdepth 1 -name "ansible-*"); do
+          cd ${ROLEPATH}
+          echo ${ROLENAME}
+          git pull
+          cd $HOME
+        done
+      else
+        export ROLENAME=$1
+        export ANSIBLEROLE=ansible-${ROLENAME}
+        export ROLEPATH=$HOME/Documents/ansible-roles/${ANSIBLEROLE}
+        cd ${ROLEPATH}
+        echo ${ROLENAME}
+        git pull
+        cd $HOME
+      fi
     elif [[ -z $1 ]]; then
       read "ROLENAME?Name of role to pull ( Ex: [rolename] or [all] ) ansible- : "
       export ANSIBLEROLE=ansible-${ROLENAME}
@@ -1121,13 +1130,6 @@ zshrc: |
       echo ${ROLENAME}
       git pull
       cd $HOME
-    elif [[ "$1" == "all" ]]; then
-      for ROLEPATH in $(find Documents/ansible-roles -type d -maxdepth 1 -name "ansible-*"); do
-        cd ${ROLEPATH}
-        echo ${ROLENAME}
-        git pull
-        cd $HOME
-      done
     fi
   }
 

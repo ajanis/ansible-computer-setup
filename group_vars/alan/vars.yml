@@ -1105,18 +1105,26 @@ zshrc: |
   }
 
   function pull-role () {
-    if [[ ! -z $1 ]]; then
-      ROLENAME=$1
-    elif [[ -z $1 ]]; then
-      read -s "ROLENAME?Name of role to pull ( Ex: [rolename] or [all] ) ansible- : "
+    if [[ -n $1 ]]; then
+      export ROLENAME=$1
       export ANSIBLEROLE=ansible-${ROLENAME}
       export ROLEPATH=$HOME/Documents/ansible-roles/${ANSIBLEROLE}
       cd ${ROLEPATH}
+      echo ${ROLENAME}
+      git pull
+      cd $HOME
+    elif [[ -z $1 ]]; then
+      read "ROLENAME?Name of role to pull ( Ex: [rolename] or [all] ) ansible- : "
+      export ANSIBLEROLE=ansible-${ROLENAME}
+      export ROLEPATH=$HOME/Documents/ansible-roles/${ANSIBLEROLE}
+      cd ${ROLEPATH}
+      echo ${ROLENAME}
       git pull
       cd $HOME
     elif [[ "$1" == "all" ]]; then
       for ROLEPATH in $(find Documents/ansible-roles -type d -maxdepth 1 -name "ansible-*"); do
         cd ${ROLEPATH}
+        echo ${ROLENAME}
         git pull
         cd $HOME
       done
@@ -1125,8 +1133,8 @@ zshrc: |
 
 
   function encrypt() {
-    if [[ ! -z $1 ]]; then
-    VARNAME=$1
+    if [[ -n $1 ]]; then
+    export VARNAME=$1
     elif [[ -z $1 ]]; then
     read -s "VARNAME?Name of variable : "
     fi
